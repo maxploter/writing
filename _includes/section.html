@@ -1,0 +1,10 @@
+{% assign pieces = site.pages | where_exp: "p", "p.dir == page.dir and p.name != 'index.md'" | sort: "date", "first" | reverse %}
+{% if pieces.size == 0 %}
+<p>Nothing here yet.</p>
+{% else %}
+<ul>
+  {% for p in pieces %}
+  <li>{{ p.date | date: "%Y-%m-%d" }} · <a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}

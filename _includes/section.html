@@ -1,4 +1,4 @@
-{% assign pieces = site.pages | where_exp: "p", "p.dir == page.dir and p.name != 'index.md'" | sort: "date", "first" | reverse %}
+{% assign pieces = site.pages | where_exp: "p", "p.dir == page.dir" | where_exp: "p", "p.name != 'index.md'" | sort: "date" | reverse %}
 {% if pieces.size == 0 %}
 <p>Nothing here yet.</p>
 {% else %}
